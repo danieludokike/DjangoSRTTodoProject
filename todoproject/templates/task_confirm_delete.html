@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirm Delete{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="mb-4 text-danger">Confirm Deletion ⚠️</h1>
+        
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Are you sure?</h4>
+            <p>
+                You are about to permanently delete the task: 
+                **"{{ task.title }}"**
+            </p>
+            <hr>
+            <p class="mb-0">
+                This action cannot be undone.
+            </p>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <button type="submit" class="btn btn-danger btn-lg">
+                Yes, Delete it! 💣
+            </button>
+            
+            <a href="{% url 'task_list' %}" class="btn btn-secondary btn-lg">
+                No, Go Back
+            </a>
+        </form>
+    </div>
+{% endblock content %}

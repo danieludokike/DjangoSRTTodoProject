@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Task - {{ form.instance.title }}{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="mb-4">Edit Task: **{{ form.instance.title }}** 📝</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            
+            {{ form.as_p }} 
+
+            <button type="submit" class="btn btn-success">Update Task</button>
+            
+            <a href="{% url 'task_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+{% endblock content %}
